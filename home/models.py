@@ -26,7 +26,7 @@ class MenuItems(models.Model):
     is_active = models.BooleanField(default=True)
     price = models.IntegerField()
     image = models.ImageField(upload_to='cover')
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='MenuItems')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
 
     def __str__(self):
         return self.name
