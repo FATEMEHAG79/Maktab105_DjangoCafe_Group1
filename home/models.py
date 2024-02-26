@@ -31,7 +31,7 @@ class MenuItems(models.Model):
 
 
 class OrderItem(models.Model):
-    MenuItems_ = models.ForeignKey(MenuItems,on_delete=models.CASCADE)
+    _MenuItems = models.ForeignKey(MenuItems,on_delete=models.CASCADE)
     #one_to_one relation with reciept-order-item
 
 
