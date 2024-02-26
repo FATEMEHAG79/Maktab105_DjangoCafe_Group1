@@ -23,3 +23,6 @@ TestResults.xml
 db.sqlite3
 venv/
 .idea/
+home/__pycache__
+home/migrations/__pycache__
+config/__pycache__
