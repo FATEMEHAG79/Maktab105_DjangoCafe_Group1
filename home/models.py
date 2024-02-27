@@ -67,18 +67,18 @@ class User(models.Model):
 
 
 
-class Contact_us(models.Model):
-    id=models.IntegerField(max_length=20,unique=True)
-    full_name=models.CharField(max_length=50)
-    email=models.EmailField(unique=True)
-    phone_number=models.PhoneNumberField((""),unique=True)
-    #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
+# class Contact_us(models.Model):
+#     id=models.IntegerField(max_length=20,unique=True)
+#     full_name=models.CharField(max_length=50)
+#     email=models.EmailField(unique=True)
+#     phone_number=models.PhoneNumberField((""),unique=True)
+#     #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
     
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
-    class Meta():
-        pass
+#     class Meta():
+#         pass
 
 
 
