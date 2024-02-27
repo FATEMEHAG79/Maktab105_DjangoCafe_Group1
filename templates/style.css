@@ -21,7 +21,8 @@
 
 html {
     font-size: 62.5%;
-    overflow: hidden;
+    /* I comment this line to scroll 👇*/
+    /* overflow: hidden; */
     scroll-padding-top: 9rem;
     scroll-behavior: smooth;
 }
@@ -45,6 +46,21 @@ body {
 
 section{
     padding: 2rem 7%;
+}
+
+.heading{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 3.5rem;
+    font-size: 4rem;
+}
+
+/* use this if you want to have a span for heading */
+
+.heading span{
+    color: var(--main-color);
+    text-transform: uppercase;
 }
 
 .btn{
@@ -167,6 +183,47 @@ section{
     line-height: 1.8;
     padding: 1rem 0;
     color: #eee;
+}
+
+.menu .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.menu .box-container .box {
+    padding: 5rem;
+    text-align: center;
+    border: var(--border);
+}
+
+.menu .box-container .box img {
+    height: 10rem;
+}
+
+.menu .box-container .box h3{
+    color: #fff;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+
+.menu .box-container .box .price{
+    color: #fff;
+    font-size: 2.5rem;
+    padding: .5rem 0;
+}
+
+.menu .box-container .box .price span{
+    font-size: 1.5rem;
+    text-decoration: line-through;
+}
+
+.menu .box-container .box:hover{
+background: #fff;
+}
+
+.menu .box-container .box:hover > *{
+    color:var(--black);
 }
 
 /* media queries */
