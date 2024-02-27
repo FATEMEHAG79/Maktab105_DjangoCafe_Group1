@@ -14,7 +14,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='cover')
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    # parent = models.ForeignKey('self',related_name='children',on_delete=models.CASCADE)
+    parent = models.ForeignKey('self',related_name='children',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -26,14 +26,14 @@ class MenuItems(models.Model):
     is_active = models.BooleanField(default=True)
     price = models.IntegerField()
     image = models.ImageField(upload_to='cover')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
 
     def __str__(self):
         return self.name
 
 
 class OrderItem(models.Model):
-    _MenuItems = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
+    menuitem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
     # one_to_one relation with reciept-order-item # noqa
 
 
