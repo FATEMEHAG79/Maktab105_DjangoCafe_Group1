@@ -47,7 +47,6 @@ class Order(models.Model):
 
 
 class User(models.Model):
-    Contact_us=models.ForeignKey(Contact_us, on_delete=models.CASCADE)
     id=models.IntegerField(Primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -56,7 +55,6 @@ class User(models.Model):
     password=models.AutoField(max_length=20,min_length=8 ,unique=True)
     username=models.CharField(max_length=50 ,min_length=8,unique=True)
     adress=models.CharField()
-    #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
@@ -65,20 +63,6 @@ class User(models.Model):
     class Meta():
         pass
 
-
-
-# class Contact_us(models.Model):
-#     id=models.IntegerField(max_length=20,unique=True)
-#     full_name=models.CharField(max_length=50)
-#     email=models.EmailField(unique=True)
-#     phone_number=models.PhoneNumberField((""),unique=True)
-#     #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
-    
-#     def __str__(self):
-#         return self.name
-
-#     class Meta():
-#         pass
 
 
 
