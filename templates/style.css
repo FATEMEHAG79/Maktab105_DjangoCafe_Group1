@@ -132,13 +132,21 @@ body {
 }
 
 @media (max-width:991px){
+    
+    #menu-btn{
+        display: inline-block;
+    }
 
     .header .navbar{
         position: absolute;
-        top: 100%; right: 0;
+        top: 100%; right: -100%;
         background: #fff;
         width: 30rem;
         height: calc(100vh - 9.5rem);
+    }
+
+    .header .navbar.active{
+        right: 0;
     }
 
     .header .navbar a{
