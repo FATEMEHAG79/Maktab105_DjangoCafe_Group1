@@ -6,7 +6,7 @@ class User(models.Model):
     id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    # phone_number = models.PhoneNumberField("", unique=True)
+    phone_number = models.CharField(max_length=11, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=20, unique=True)
     username = models.CharField(max_length=50, unique=True)
