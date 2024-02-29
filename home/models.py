@@ -1,6 +1,7 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import AbstractUser, UserManager ,BaseUserManager,PermissionsMixin
+import uuid
+# Create your models here.PermissionsMixin
 
 
 class Menu(models.Model):
@@ -45,45 +46,59 @@ class Order(models.Model):
     # one-to-many relation with user
 
 
+class UserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('Users must have an email address')
+        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
 
-class User(models.Model):
-    Contact_us=models.ForeignKey(Contact_us, on_delete=models.CASCADE)
-    id=models.IntegerField(Primary_key=True)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    phone_number=models.PhoneNumberField((""),unique=True)
-    email=models.EmailField(unique=True)
-    password=models.AutoField(max_length=20,min_length=8 ,unique=True)
-    username=models.CharField(max_length=50 ,min_length=8,unique=True)
-    adress=models.CharField()
-    #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_sueruser', True)
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True')
+        return self.create_user(email, password, **extra_fields)
+
+
+class UserModel(AbstractUser, PermissionsMixin):
+    id               = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)                     
+    username         = None
+    email            = models.EmailField(unique = True,  null = True)
+    first_name       = models.CharField(max_length = 50, null = True)
+    last_name        = models.CharField(max_length = 50, null = True)
+    created_at       = models.DateTimeField(auto_now_add=True)
+    is_confirmEmail  = models.BooleanField(default=False)
+    enable_two_factor_authentication = models.BooleanField(null=True, blank=True)
     
+
+    objects = UserManager()
+
+    USERNAME_FIELD  = 'email'
+    REQUIRED_FIELDS = ["first_name", "last_name"]
+   
     def __str__(self):
-        return self.name
-
-
-    class Meta():
-        pass
-
-
-
-class Contact_us(models.Model):
-    id=models.IntegerField(max_length=20,unique=True)
-    full_name=models.CharField(max_length=50)
-    email=models.EmailField(unique=True)
-    phone_number=models.PhoneNumberField((""),unique=True)
-    #Comments=models.ForeignKey(Comments,on_delete=models.CASCADE)
+       return "{}".format(self.email) 
     
-    def __str__(self):
-        return self.name
+    @property
+    def get_user_fullname(self):
+        return f"{self.first_name} {self.last_name}"
+    
 
-    class Meta():
-        pass
+
+
+
+
+
 
 
 
 class Comments(models.Model):
-    User=models.ForeignKey(User,on_delete=models.CASCADE)
+    User=models.ForeignKey(UserModel,on_delete=models.CASCADE)
     title=models.CharField(max_length=30)
     text=models.CharField(max_length=150)
     date_text=models.DateTimeField()
