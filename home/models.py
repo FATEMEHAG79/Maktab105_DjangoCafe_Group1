@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    id = models.IntegerField(Primary_key=True)
+    id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     phone_number = models.PhoneNumberField("", unique=True)
@@ -13,7 +13,14 @@ class User(models.Model):
     address = models.CharField()
 
     def __str__(self):
-        return self.name
+        return (
+            f"ID: {self.id}, "
+            f"Name: {self.first_name} {self.last_name}, "
+            f"Phone: {self.phone_number}, "
+            f"Email: {self.email}, "
+            f"Username: {self.username}, "
+            f"Address: {self.address}"
+        )
 
     class Meta:
         pass
