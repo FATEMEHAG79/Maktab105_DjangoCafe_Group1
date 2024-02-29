@@ -2,51 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-
-
-class Menu(models.Model):
-    name = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.name
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='cover')
-    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
-class MenuItems(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    is_active = models.BooleanField(default=True)
-    price = models.IntegerField()
-    image = models.ImageField(upload_to='cover')
-
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
-
-    def __str__(self):
-        return self.name
-
-
-class OrderItem(models.Model):
-    menuitem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-    # one_to_one relation with reciept-order-item # noqa
-
-
-class Order(models.Model):
-    orderitem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)  # noqa
-    status = models.BooleanField(default=True)
-    creat_time = models.DateField(auto_now_add=True, editable=False)
-    update_time = models.DateField(auto_now=True, editable=False)
-    # one-to-many relation with user
-
-
 class User(models.Model):
     id = models.IntegerField(Primary_key=True)
     first_name = models.CharField(max_length=30)
@@ -62,15 +17,50 @@ class User(models.Model):
 
     class Meta:
         pass
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='cover')
+    parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+class MenuItems(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    is_actived = models.BooleanField(default=True)
+    price = models.IntegerField()
+    image = models.ImageField(upload_to='cover')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
+
+    def __str__(self):
+        return self.name
+
+class Table(models.Model):
+    table_number = models.IntegerField()
+    is_reseved = models.BooleanField(default=False)
+    user = models.OneToOneField(User, on_delete=models.CASCCADE, null=True, blank=True, related_name="table")
 
 
+class Order(models.Model):
+    complete=models.BooleanField(default=False)
+    orderitem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)  # noqa
+    ordered_at= models.DateField(auto_now_add=True, editable=False)
+    User=models.ForeignKey(User, on_delete=models.CASCADE)
+    table=models.ForeignKey(Table, on_delete=models.CASCADE)
+
+
+class OrderItem(models.Model):
+    menuitem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
+    order=models.ForeignKey(Order, on_delete=models.CASCADE)
+    quantity=models.integerField(default=0,null=True, blank=True)
+
+    def __str__(self):
+        return str(self.id)
 class Comments(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     text = models.CharField(max_length=150)
     date_text = models.DateTimeField()
     MenuItem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-
     def __str__(self):
         return self.name
 
