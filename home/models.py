@@ -30,7 +30,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='cover')
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return self.name
 
@@ -71,14 +71,20 @@ class OrderItem(models.Model):
 
 
 class Comments(models.Model):
-    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     text = models.CharField(max_length=150)
     date_text = models.DateTimeField()
-    MenuItem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
+    menu_item = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return (
+            f"User: {self.user}, "
+            f"Title: {self.title}, "
+            f"Text: {self.text}, "
+            f"Date: {self.date_text}, "
+            f"Menu Item: {self.menu_item}"
+        )
 
     class Meta:
         pass
