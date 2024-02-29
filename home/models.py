@@ -24,12 +24,17 @@ class User(models.Model):
 
     class Meta:
         pass
+
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='cover')
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
+    
     def __str__(self):
         return self.name
+
+
 class MenuItems(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -41,32 +46,37 @@ class MenuItems(models.Model):
     def __str__(self):
         return self.name
 
+
 class Table(models.Model):
     table_number = models.IntegerField()
     is_reseved = models.BooleanField(default=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name="table")
 
+
 class Order(models.Model):
-    complete=models.BooleanField(default=False)
+    complete = models.BooleanField(default=False)
     orderitem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)  # noqa
-    ordered_at= models.DateField(auto_now_add=True, editable=False)
-    User=models.ForeignKey(User, on_delete=models.CASCADE)
-    table=models.ForeignKey(Table, on_delete=models.CASCADE)
+    ordered_at = models.DateField(auto_now_add=True, editable=False)
+    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
 
 class OrderItem(models.Model):
     menuitem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-    order=models.ForeignKey(Order, on_delete=models.CASCADE)
-    quantity=models.integerField(default=0,null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    quantity = models.integerField(default=0, null=True, blank=True)
 
     def __str__(self):
         return str(self.id)
+
+
 class Comments(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     text = models.CharField(max_length=150)
     date_text = models.DateTimeField()
     MenuItem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.name
 
