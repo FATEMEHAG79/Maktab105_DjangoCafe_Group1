@@ -6,11 +6,11 @@ class User(models.Model):
     id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    phone_number = models.PhoneNumberField("", unique=True)
+    # phone_number = models.PhoneNumberField("", unique=True)
     email = models.EmailField(unique=True)
-    password = models.AutoField(max_length=20, min_length=8, unique=True)
-    username = models.CharField(max_length=50, min_length=8, unique=True)
-    address = models.CharField()
+    password = models.CharField(max_length=20, unique=True)
+    username = models.CharField(max_length=50, unique=True)
+    address = models.TextField()
 
     def __str__(self):
         return (
@@ -55,10 +55,12 @@ class Table(models.Model):
 
 class Order(models.Model):
     complete = models.BooleanField(default=False)
-    orderitem = models.ForeignKey(OrderItem, on_delete=models.CASCADE)  # noqa
     ordered_at = models.DateField(auto_now_add=True, editable=False)
-    User = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id)
 
 
 class OrderItem(models.Model):
