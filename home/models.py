@@ -38,8 +38,8 @@ class Category(models.Model):
 class MenuItems(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    is_actived = models.BooleanField(default=True) # noqa
-    price = models.IntegerField()
+    is_active = models.BooleanField(default=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='cover')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
 
@@ -49,7 +49,7 @@ class MenuItems(models.Model):
 
 class Table(models.Model):
     table_number = models.IntegerField()
-    is_reseved = models.BooleanField(default=False) # noqa
+    is_reserved = models.BooleanField(default=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name="table")
 
 
