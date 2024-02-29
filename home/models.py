@@ -37,8 +37,7 @@ class MenuItems(models.Model):
 class Table(models.Model):
     table_number = models.IntegerField()
     is_reseved = models.BooleanField(default=False)
-    user = models.OneToOneField(User, on_delete=models.CASCCADE, null=True, blank=True, related_name="table")
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name="table")
 
 class Order(models.Model):
     complete=models.BooleanField(default=False)
