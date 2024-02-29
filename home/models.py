@@ -1,13 +1,14 @@
-from django.db import models
-<<<<<<< HEAD
-from django.contrib.auth.models import AbstractUser, UserManager ,BaseUserManager,PermissionsMixin
 import uuid
+
+from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.db import models
+
+
 # Create your models here.PermissionsMixin
 
 
 class Menu(models.Model):
     name = models.CharField(max_length=250)
-=======
 
 
 # Create your models here.
@@ -20,7 +21,6 @@ class User(models.Model):
     password = models.CharField(max_length=20, unique=True)
     username = models.CharField(max_length=50, unique=True)
     address = models.TextField()
->>>>>>> 86f2fb1f48775542538c80769d87bfe9253d095a
 
     def __str__(self):
         return (
@@ -69,7 +69,6 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
-<<<<<<< HEAD
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -91,45 +90,35 @@ class UserManager(BaseUserManager):
 
 
 class UserModel(AbstractUser, PermissionsMixin):
-    id               = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)                     
-    username         = None
-    email            = models.EmailField(unique = True,  null = True)
-    first_name       = models.CharField(max_length = 50, null = True)
-    last_name        = models.CharField(max_length = 50, null = True)
-    created_at       = models.DateTimeField(auto_now_add=True)
-    is_confirmEmail  = models.BooleanField(default=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = None
+    email = models.EmailField(unique=True, null=True)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_confirmEmail = models.BooleanField(default=False)
     enable_two_factor_authentication = models.BooleanField(null=True, blank=True)
-    
 
     objects = UserManager()
 
-    USERNAME_FIELD  = 'email'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["first_name", "last_name"]
-   
+
     def __str__(self):
-       return "{}".format(self.email) 
-    
+        return "{}".format(self.email)
+
     @property
     def get_user_fullname(self):
         return f"{self.first_name} {self.last_name}"
-    
-
-
-
-
-
-
-
 
 
 class Comments(models.Model):
-    User=models.ForeignKey(UserModel,on_delete=models.CASCADE)
-    title=models.CharField(max_length=30)
-    text=models.CharField(max_length=150)
-    date_text=models.DateTimeField()
-    MenuItem=models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-    
-=======
+    User = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    text = models.CharField(max_length=150)
+    date_text = models.DateTimeField()
+    MenuItem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
+
     def __str__(self):
         return str(self.id)
 
@@ -150,7 +139,6 @@ class Comments(models.Model):
     date_text = models.DateTimeField()
     menu_item = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
 
->>>>>>> 86f2fb1f48775542538c80769d87bfe9253d095a
     def __str__(self):
         return (
             f"User: {self.user}, "
