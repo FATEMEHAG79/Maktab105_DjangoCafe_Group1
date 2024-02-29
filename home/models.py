@@ -81,7 +81,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_sueruser', True)
+        extra_fields.setdefault('is_superuser', True)
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True')
         if extra_fields.get('is_superuser') is not True:
@@ -132,7 +132,7 @@ class OrderItem(models.Model):
         return str(self.id)
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=30)
     text = models.CharField(max_length=150)
