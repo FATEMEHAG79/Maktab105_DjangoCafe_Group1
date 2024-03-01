@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cofe', '0001_initial'),
+        ('coffeeshop', '0001_initial'),
     ]
 
     operations = [
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='menuitems',
             name='category',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='MenuItems', to='cofe.category'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='MenuItems', to='coffeeshop.category'),
         ),
         migrations.AlterField(
             model_name='menuitems',
@@ -60,24 +60,24 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('quantity', models.IntegerField(default=0)),
-                ('menuitem', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.menuitems')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.order')),
+                ('menuitem', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.menuitems')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.order')),
             ],
         ),
         migrations.AddField(
             model_name='order',
             name='table',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.table'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.table'),
         ),
         migrations.AddField(
             model_name='table',
             name='user',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='table', to='cofe.user'),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='table', to='coffeeshop.user'),
         ),
         migrations.AddField(
             model_name='order',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.user'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.user'),
         ),
         migrations.CreateModel(
             name='Comment',
@@ -86,8 +86,8 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=30)),
                 ('text', models.CharField(max_length=150)),
                 ('date_text', models.DateTimeField()),
-                ('menu_item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.menuitems')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cofe.user')),
+                ('menu_item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.menuitems')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coffeeshop.user')),
             ],
         ),
     ]

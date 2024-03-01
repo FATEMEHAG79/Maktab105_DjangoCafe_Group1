@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True)),
                 ('price', models.IntegerField()),
                 ('image', models.ImageField(upload_to='media')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='MenuItems', to='cofe.category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='MenuItems', to='coffeeshop.category')),
             ],
         ),
     ]
