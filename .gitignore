@@ -26,3 +26,4 @@ venv/
 home/__pycache__
 home/migrations/__pycache__
 config/__pycache__
+identifier.sqlite
