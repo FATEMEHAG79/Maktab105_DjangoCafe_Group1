@@ -163,7 +163,7 @@ section{
     display: flex;
     align-items: center;
     background:url('../images/Coffee_Shop_Background_image.jpg') no-repeat;
-    background-size: cover;
+    background-size: media;
     background-position: center;
 } */
 

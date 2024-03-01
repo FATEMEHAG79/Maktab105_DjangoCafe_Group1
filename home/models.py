@@ -27,7 +27,7 @@ class User(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='cover')
+    image = models.ImageField(upload_to='media')
     # parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -39,7 +39,7 @@ class MenuItems(models.Model):
     description = models.TextField()
     is_active = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='cover')
+    image = models.ImageField(upload_to='media')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='MenuItems')
 
     def __str__(self):
