@@ -1,5 +1,4 @@
-
-from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
 
 
@@ -14,6 +13,7 @@ class User(models.Model):
     password = models.CharField(max_length=20, unique=True)
     username = models.CharField(max_length=50, unique=True)
     address = models.TextField()
+
     def __str__(self):
         return (
             f"ID: {self.id}, "
@@ -23,6 +23,7 @@ class User(models.Model):
             f"Username: {self.username}, "
             f"Address: {self.address}"
         )
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -57,6 +58,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)
 
+
 class OrderItem(models.Model):
     menuitem = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -81,4 +83,3 @@ class Comment(models.Model):
             f"Date: {self.date_text}, "
             f"Menu Item: {self.menu_item}"
         )
-
