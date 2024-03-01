@@ -27,3 +27,5 @@ cofe/__pycache__
 cofe/migrations/__pycache__
 config/__pycache__
 identifier.sqlite
+home/__pycache__
+home/migrations/__pycache__
