@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,17 @@
     <!-- font awesome cdn linl -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- this is where I link css file -->
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/home.css'%}">
+    <style>
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url('{% static "images/Coffee_Shop_Background_image.jpg" %}') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -61,42 +72,42 @@
 
         <div class="box-container">
             <div class="box">
-                <img src="./images/latte.png" alt="">
+                <img src="{%static 'images/latte.png'%}" alt="">
                 <h3>latte healthy and tasty</h3>
                 <div class="price">$5.99 <span>10.00</span></div>
                 <a href="#" class="btn">add to cart</a>
             </div>
 
             <div class="box">
-                <img src="./images/burger.png" alt="">
+                <img src="{%static 'images/burger.png'%}" alt="">
                 <h3>latte healthy and tasty</h3>
                 <div class="price">$15.99 <span>30.00</span></div>
                 <a href="#" class="btn">add to cart</a>
             </div>
 
             <div class="box">
-                <img src="./images/pizza.png" alt="">
+                <img src="{%static 'images/pizza.png'%}" alt="">
                 <h3>latte healthy and tasty</h3>
                 <div class="price">$10.99 <span>20.00</span></div>
                 <a href="#" class="btn">add to cart</a>
             </div>
 
             <div class="box">
-                <img src="./images/cappuccino.png" alt="">
+                <img src="{%static 'images/cappuccino.png'%}" alt="">
                 <h3>for fancy-schmancy people</h3>
                 <div class="price">$6.99 <span>10.00</span></div>
                 <a href="#" class="btn">add to cart</a>
             </div>
 
             <div class="box">
-                <img src="./images/strawberry_ice_cream.png" alt="">
+                <img src="{%static 'images/strawberry_ice_cream.png'%}" alt="">
                 <h3>yummy yummy</h3>
                 <div class="price">$8.99 <span>12.00</span></div>
                 <a href="#" class="btn">add to cart</a>
             </div>
 
             <div class="box">
-                <img src="./images/tea.png" alt="">
+                <img src="{%static 'images/tea.png'%}" alt="">
                 <h3>persian tea</h3>
                 <div class="price">$2.99 <span>5.00</span></div>
                 <a href="#" class="btn">add to cart</a>
@@ -137,7 +148,7 @@
     </section>
     <!-- footer section ends -->
     <!-- custom js file link -->
-    <script src="home.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>
