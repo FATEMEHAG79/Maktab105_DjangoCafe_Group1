@@ -23,7 +23,7 @@ TestResults.xml
 db.sqlite3
 venv/
 .idea/
-home/__pycache__
-home/migrations/__pycache__
+cofe/__pycache__
+cofe/migrations/__pycache__
 config/__pycache__
 identifier.sqlite
