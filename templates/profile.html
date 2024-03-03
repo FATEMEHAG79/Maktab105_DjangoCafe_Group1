@@ -47,12 +47,13 @@
 <h2 style="text-align:center;">YOUR ACCOUNT</h2>
 
 </div> 
-
+{% for user in users %}
 <div class="profile">
-    <h2> &#128100;Name</h2>
-    <p>phoneNumber</p>
+    <h2> &#128100;{{ user.username }}</h2>
+    <p>{{ user.phone_number }}</p>
     </div>
-
+{% endfor %}
+  
 <div class="profile">
 <h2>Orders</h2>
 <p>previously orders</p>
