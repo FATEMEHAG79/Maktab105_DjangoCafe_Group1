@@ -11,4 +11,8 @@ class ProfileView(DetailView):
     template_name = 'profile.html'
     context_object_name = 'users'
 
-
+class Changeinformation(UpdateView):
+    model = User
+    fields = ['username', 'phone_number']
+    template_name = 'changeinformation.html'
+    success_url = reverse_lazy('success-url')
