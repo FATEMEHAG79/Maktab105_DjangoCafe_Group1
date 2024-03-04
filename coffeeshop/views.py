@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, DetailView, UpdateView, ListView, CreateView
@@ -6,18 +7,18 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-@login_required(login_url='login')
-class ProfileView(DetailView):
+class ProfileView(DetailView,LoginRequiredMixin):
     model = User
     template_name = 'profile.html'
     context_object_name = 'users'
+    login_url = 'login'
 
 
 class Changeinformation(UpdateView):
     model = User
     fields = ['username', 'phone_number']
     template_name = 'changeinformation.html'
-    success_url = reverse_lazy('success-url')
+    success_url = reverse_lazy('profile')
 
 
 class MenuItemsView(ListView):
