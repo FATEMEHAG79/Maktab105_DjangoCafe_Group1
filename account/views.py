@@ -15,7 +15,7 @@ from .models import User
 
 class LoginView(_LoginView):
     redirect_authenticated_user = True
-    next_page = reverse_lazy("contact")
+    next_page = reverse_lazy("coffeeshop")
     template_name = "login.html"
     model = User
 
@@ -40,9 +40,9 @@ class RegisterView(generic.CreateView):
 
 class LogoutView(_LogoutView):
     # redirect_authenticated_user=False
-    # next_page="landing:login"
-    # template_name="auth/logout.html"
-    url = "/"
+    next_page = reverse_lazy("contact")
+    # template_name="logout.html"
+    # url = "/"
 
     def get(self, request, *args, **kwargs):
         logout(request)
