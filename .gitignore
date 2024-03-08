@@ -30,3 +30,4 @@ identifier.sqlite
 home/__pycache__
 home/migrations/__pycache__
 account/__pycache__
+account/migrations/__pycache__
