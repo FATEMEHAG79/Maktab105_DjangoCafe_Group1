@@ -22,5 +22,6 @@ from account.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='coffeeshop'),
-    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact')
+    path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('menu/', MenuItemsView.as_view(), name='menu_items'),
 ]
