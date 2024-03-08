@@ -4,8 +4,8 @@ from account.models import *
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='media')
+    name = models.CharField(max_length=255,unique=True)
+    image = models.ImageField(upload_to='media',unique=True)
     # parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
 
     def __str__(self):

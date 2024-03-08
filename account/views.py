@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView as _LoginView, RedirectURLMixin 
 from django.views import generic, View
 from django.forms import Form
 from django.contrib.auth import get_user_model, authenticate, login, logout
-from django.contrib.auth.models import UserModel
+from account.models import *
 from django.contrib import messages
 
 
@@ -23,7 +23,7 @@ class LoginView(_LoginView):
 #html address must change
 class RegisterView(generic.CreateView):
     template_name = "auth/register.html"
-    model = UserModel
+    model = User
     fields = ['first_name', 'last_name', 'phone_number', 'password','email','address']
     success_url = "/login"
 
