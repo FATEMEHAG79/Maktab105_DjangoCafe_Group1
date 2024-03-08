@@ -23,7 +23,7 @@ class Changeinformation(UpdateView):
 
 class MenuItemsView(ListView):
     model = MenuItems
-    template_name = 'menuitems.html'
+    template_name = 'menu_items.html'
     context_object_name = 'menu_items'
 
     def get_queryset(self):

@@ -47,6 +47,6 @@ class MenuItemViewTestCase(TestCase):
     def test_menu_items_list_view(self):
         response = self.client.get(reverse('coffeeshop'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(response, 'menu_items.html')
         self.assertIn('menu_items', response.context)
         self.assertEqual(len(response.context['menu_items']), 2)
