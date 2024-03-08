@@ -1,11 +1,10 @@
-from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager
 from django.db import models
-from account.models import *
+from account.models import User
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=255,unique=True)
-    image = models.ImageField(upload_to='media',unique=True)
+    name = models.CharField(max_length=255, unique=True)
+    image = models.ImageField(upload_to='media', unique=True, null=True)
     # parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
 
     def __str__(self):
