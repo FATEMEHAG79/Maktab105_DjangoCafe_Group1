@@ -23,7 +23,7 @@ class Changeinformation(UpdateView):
 
 class MenuItemsView(ListView):
     model = MenuItems
-    template_name = 'home.html'
+    template_name = 'menuitems.html'
     context_object_name = 'menu_items'
 
     def get_queryset(self):
@@ -32,7 +32,7 @@ class MenuItemsView(ListView):
 
 class OrderListView(ListView):
     model = Order
-    template_name = 'home.html'
+    template_name = 'order.html'
     context_object_name = 'orders'
 
     def get_queryset(self):
@@ -41,7 +41,7 @@ class OrderListView(ListView):
 
 class OrderItemCreateView(CreateView):
     model = OrderItem
-    template_name = 'home.html'
+    template_name = 'orderitem.html'
     fields = ['menuitem', 'quantity']
     success_url = reverse_lazy('order_list')
 
