@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from account.views import *
-from .views import MenuItemsView
+from coffeeshop.views import MenuItemsView
 
 
 urlpatterns = [
