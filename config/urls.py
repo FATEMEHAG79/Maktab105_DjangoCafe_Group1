@@ -23,7 +23,7 @@ from coffeeshop.views import MenuItemsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='home.html'), name='coffeeshop'),
+    path('', include("coffeeshop.urls")),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('account/',include("account.url")),
     path('menu/', MenuItemsView.as_view(), name='menu_items')
