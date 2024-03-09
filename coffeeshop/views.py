@@ -21,11 +21,11 @@ class ProfileView(DetailView,LoginRequiredMixin):
         return context
 
 
-class Changeinformation(UpdateView):
+class ChangeinformationView(UpdateView):
     model = User
-    fields = ['username', 'phone_number']
+    fields = ['username', 'phone_number', 'address']
     template_name = 'changeinformation.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('coffeeshop')
 
 
 class MenuItemsView(ListView):
