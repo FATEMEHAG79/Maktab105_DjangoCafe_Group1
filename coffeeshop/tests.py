@@ -1,12 +1,11 @@
-from .models import *
-from django.contrib.auth.models import AnonymousUser, User
-from django.test import RequestFactory, TestCase
 from django.core.files import File
+from django.test import TestCase
 from django.urls import reverse
+
+from .models import *
 
 
 class MenuItemViewTestCase(TestCase):
-
     category1 = None
     category2 = None
 
