@@ -13,6 +13,13 @@ class ProfileView(DetailView,LoginRequiredMixin):
     context_object_name = 'users'
     login_url = 'login'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = context['users']
+        raw_password = user.check_password('')
+        context['raw_password'] = raw_password
+        return context
+
 
 class Changeinformation(UpdateView):
     model = User
@@ -48,3 +55,6 @@ class OrderItemCreateView(CreateView):
     def form_valid(self, form):
         form.instance.order = Order.objects.get(id=self.kwargs['order_id'])
         return super().form_valid(form)
+
+class AboutView(TemplateView):
+    template_name = 'About.html'
