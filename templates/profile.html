@@ -58,12 +58,15 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="biography">address</label>
                 <p class="px-3 py-2 border rounded-lg">{{ users.address }}</p>
             </div>
+            <a href="{% url 'logout' %}">
+                <button class=" py-2 px-4 rounded-lg mt-4 bg-red-500 hover:bg-red-600" type="button">Logout</button>
+            </a>
             <div class="flex items-center justify-between">
                 <a href="{% url 'change' users.id %}">
                     <button class="btn py-2 px-2 rounded-lg" type="button">Change Information</button>
                 </a>
-                <button class="btn py-2 px-4 rounded-lg" type="button">Change Password</button>
 
+                <button class="btn py-2 px-4 rounded-lg" type="button">Change Password</button>
             </div>
         </div>
     </div>
