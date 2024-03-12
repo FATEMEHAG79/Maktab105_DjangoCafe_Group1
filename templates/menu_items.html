@@ -33,15 +33,15 @@
     </a>
 
     <nav class="navbar">
-        <a href={% url 'coffeeshop' %}>home</a>
-        <a href="{% url 'about' %}">about</a>
-        <a href={% url 'menu_items' %}>menu</a>
+        <a href="#home">home</a>
+        <a href="about/">about</a>
+        <a href="#menu">menu</a>
         <a href="#menuitems">menu-items</a>
-        <a href={% url 'contact' %}>contact</a>
+        <a href=contact/>contact</a>
         {% if user.is_authenticated %}
             <<a href="{% url 'profile' request.user.pk %}">Profile</a>
         {% else %}
-            <a href=account/login/>Login</a>
+            <a href={% url 'login' %}>Login</a>
         {% endif %}
     </nav>
 
