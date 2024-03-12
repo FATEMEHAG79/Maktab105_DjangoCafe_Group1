@@ -19,7 +19,7 @@
     
     <nav class="navbar">
         <a href="{% url 'coffeeshop' %}">home</a>
-        <a href="#menu">menu</a>
+        <a href={% url 'menu_items' %}>menu</a>
         <a href="#menuitems">menu-items</a>
         <a href="{% url 'contact' %}">contact</a>
         {% if user.is_authenticated %}
