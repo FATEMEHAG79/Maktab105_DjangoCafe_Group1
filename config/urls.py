@@ -19,7 +19,8 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from account.views import *
 from coffeeshop.views import MenuItemsView
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +29,4 @@ urlpatterns = [
     path('account/',include("account.url")),
     path('menu/', MenuItemsView.as_view(), name='menu_items')
 ]
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

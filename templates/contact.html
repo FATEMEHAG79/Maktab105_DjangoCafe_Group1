@@ -34,12 +34,12 @@
         </a>
 
         <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#menu">menu</a>
+            <a href={% url 'coffeeshop' %}>home</a>
+            <a href={% url 'about' %}>about</a>
+            <a href={% url 'menu_items' %}>menu</a>
             <a href="#menuitems">menu-items</a>
-            <a href=contact/>contact</a>
-            <a href=account/login/>log in</a>
+            <a href=#contact>contact</a>
+            <a href={% url 'login' %}>log in</a>
         </nav>
 
         <div class="icons">
