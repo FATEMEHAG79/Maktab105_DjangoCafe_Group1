@@ -67,3 +67,5 @@ class HistoryView(ListView):
         order_history= Order.objects.filter(user='username').values()
         return order_history
     
+
+    

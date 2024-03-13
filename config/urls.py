@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include("coffeeshop.urls")),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
     path('account/',include("account.url")),
-    path('menu/', MenuItemsView.as_view(), name='menu_items')
+    path('menu/', MenuItemsView.as_view(), name='menu_items'),
+    path('reserv/',include('reservation.url'))
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
