@@ -1,5 +1,6 @@
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView
 
 from .models import MenuItems, Order, OrderItem
 
@@ -48,3 +49,10 @@ class HistoryView(ListView):
     def filter_type():
         order_history = Order.objects.filter(user='username').values()
         return order_history
+
+class ItemDetailView(DetailView):
+    model = 'MenuItems'
+    template_name = 'ItemDetailView.html'
+    def get(self,request, pk):
+        item=get_object_or_404(MenuItems, pk=pk)
+        return render(request,"ItemDetailView.html",{"item":item})
