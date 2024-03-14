@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager
+from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager
 from django.db import models
 
 
@@ -36,5 +36,8 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=11, unique=True)
     address = models.TextField()
     objects = MyUserManager()
+    password = models.CharField(max_length=16)
+
     def __str__(self):
         return self.username
+
