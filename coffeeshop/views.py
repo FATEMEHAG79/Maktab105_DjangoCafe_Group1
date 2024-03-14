@@ -35,6 +35,7 @@ class OrderItemCreateView(CreateView):
         form.instance.order = Order.objects.get(id=self.kwargs['order_id'])
         return super().form_valid(form)
 
+
 class AboutView(TemplateView):
     template_name = 'About.html'
 
@@ -47,6 +48,3 @@ class HistoryView(ListView):
     def filter_type():
         order_history = Order.objects.filter(user='username').values()
         return order_history
-    
-
-    
