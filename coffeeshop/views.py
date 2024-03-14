@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView, DetailView
 from django.http import JsonResponse
-from .models import MenuItems, Order, OrderItem, Cart
+from .models import MenuItems, Order, OrderItem, Order
 
 
 # Create your views here.
@@ -68,11 +68,11 @@ def add_to_cart(request):
             # print('injaaaaa hastamm   product_id', product_id)
             product_check = MenuItems.objects.get(id=product_id)
             if product_check:
-                if Cart.objects.filter(user=current_user, product_id=product_id):
+                if Order.objects.filter(user=current_user, product_id=product_id):
                     return JsonResponse({'status': 'Product is Already in Cart'})
                 else:
                     product_qyt = 1
-                    Cart.objects.create(user=current_user, product_id=product_id, quantity=product_qyt)
+                    Order.objects.create(user=current_user, product_id=product_id, quantity=product_qyt)
                     return JsonResponse({'status': 'Product added successfuly'})
             else:
                 return JsonResponse({'status': 'No such Product found'})
@@ -81,7 +81,7 @@ def add_to_cart(request):
     return redirect('/')
 def checkout(request):
     context = {}
-    cart_items = Cart.objects.filter(user=request.user)
+    cart_items = Order.objects.filter(user=request.user)
 
     context['cart_items'] = cart_items
     context['cart_total'] = cart_items.count()
@@ -104,7 +104,7 @@ def update_cart(requset):
     prod_id = data['productId']
     action = data['action']
 
-    cart_item = Cart.objects.filter(user=requset.user, product_id=prod_id)[0]
+    cart_item = Order.objects.filter(user=requset.user, product_id=prod_id)[0]
 
     if cart_item:
         if action == 'add':

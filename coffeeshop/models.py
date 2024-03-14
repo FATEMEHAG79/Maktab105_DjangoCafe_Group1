@@ -62,10 +62,3 @@ class Comment(models.Model):
             f"Date: {self.date_text}, "
             f"Menu Item: {self.menu_item}"
         )
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.product.name

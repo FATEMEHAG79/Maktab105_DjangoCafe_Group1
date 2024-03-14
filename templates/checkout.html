@@ -65,7 +65,7 @@
                                                 <div class="row">
                                                     <div class="col-md-5 product-name">
                                                         <div class="product-name">
-                                                            <a href="{% url 'product:product_detail' prod_id=item.product.id %}">{{ item.product.title }}</a>
+                                                            <a href="{% url 'menu_item.get_absolute_url' prod_id=item.product.id %}">{{ item.product.name }}</a>
                                                         </div>
                                                     </div>
                                                     <input type='hidden' class='prod_id' value="{{ item.product.id }}">

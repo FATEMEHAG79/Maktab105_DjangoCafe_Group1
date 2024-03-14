@@ -6,7 +6,7 @@ $('.addToCartBtn').click(function (e){
 
     $.ajax({
        method: "POST",
-       url: "/product/add-to-cart/",
+       url: "add-to-cart/",
        data: {
           'product_id': product_id,
           csrfmiddlewaretoken: token
@@ -34,7 +34,7 @@ for (i = 0; i < updateBtns.length; i++) {
 
 function updateQuantity(productId, action){
 
-   let url = '/product/update-cart/'
+   let url = 'update-cart/'
 
    fetch(url, {
       method: "POST",
