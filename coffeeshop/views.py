@@ -1,9 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, DetailView, UpdateView, ListView, CreateView
-from .models import User, MenuItems, Order, OrderItem
-from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView, ListView, CreateView
+
+from .models import MenuItems, Order, OrderItem
+
+
 # Create your views here.
 
 
