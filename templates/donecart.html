@@ -1,128 +1,39 @@
-<html>
-<body>
-<header class="header">
-  <a href="#" class="logo">
-      <img width="64" height="64"
-          src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-coffee-shop-coffee-flaticons-flat-flat-icons.png"
-          alt="external-coffee-shop-coffee-flaticons-flat-flat-icons" />
-  </a>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+<!-- Fonts referenced in mdbootstrap, moved up to reduce page load time -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Material Design Bootstrap -->
+<link rel="stylesheet" href="https://gensuiteqa.genalphacatalog.com/gensuite/css/ps/mdb.min.css?version=0707050300507050503" type='text/css'/>  
+<link rel="stylesheet" href="https://gensuiteqa.genalphacatalog.com/gensuite/css/ps/storefront.css?version=0707050300507050503" type='text/css'/>
+<link rel="stylesheet" href="https://gensuiteqa.genalphacatalog.com/gensuite/css/ps/autocomplete.css?version=0707050300507050503"/>
+    <link rel="stylesheet" type="text/css" href="../css/ps/theme.css?version=0707050300507050503">
+    
 
-  <nav class="navbar">
-      <a href="#home">home</a>
-      <a href="#about">about</a>
-      <a href="#menu">menu</a>
-      <a href="#menuitems">menu-items</a>
-      <a href="#contact">contact</a>
-      <a href="#user">user</a>
-  </nav>
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
-  <div class="icons">
-      <div class="fas fa-search" id="search-btn"></div>
-      <div class="fas fa-shopping-cart" id="cart-btn"></div>
-      <div class="fas fa-bars" id="menu-btn"></div>
-  </div>
+<link href="//cdn.datatables.net/plug-ins/1.10.19/integration/font-awesome/dataTables.fontAwesome.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet"  type="text/css" href="https://gensuiteqa.genalphacatalog.com/gensuite/css/ps/orderhistory.css?version=0707050300507050503" />
 
-  <div class="seacrh-form">
-      <input type="search" id="search-box" placeholder="seacrh here...">
-      <label for="seacrh-box" class="fas fa-search"></label>
-  </div>
-  <!--start deploy cart items here  -->
-  <!-- end deploy cart items here -->
-</header>
-
-
-
-
-
-<h1 style="color:rgb(146, 120, 63);",style="font-size:500%;">Shopping Cart</h1>
-
-<div class="shopping-cart" >
-
-   </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg"width="200" height="200">
-    </div>
-    <div class="product-details">
-      <div class="product-title">cofee</div>
-      <p class="product-description">sperso+milk+sugar.</p>
-    </div>
-    <div class="product-price">12.99</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png"width="200" height="200">
-    </div>
-    <div class="product-details">
-      <div class="product-title">mofeen</div>
-      <p class="product-description">vanilia mofeen</p>
-    </div>
-    <div class="product-price">45.99</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">45.99</div>
-  </div>
-
-  <div class="totals">
-    <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
-    </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div>
-      
-      <button class="checkout">Checkout</button>
-
-</div>
-<!-- footer section starts -->
-<section class="footer">
-  <div class="share">
-      <a href="#" class="fab fa-facebook-f"></a>
-      <a href="#" class="fab fa-twitter"></a>
-      <a href="#" class="fab fa-instagram"></a>
-      <a href="#" class="fab fa-linkedin"></a>
-      <a href="#" class="fab fa-pinterest"></a>
-  </div>
-
-  <div class="links">
-      <a href="#">home</a>
-      <a href="#">about</a>
-      <a href="#">menu</a>
-      <a href="#">menu items</a>
-      <a href="#">contact</a>
-      <a href="#">user</a>
-  </div>
-
-  <div class="credit">Created by <span>Maktab 105 Group 1</span> | all rights reserved</div>
-</section>
-<!-- footer section ends -->
-</body>
-</html>
+<div class="table-responsive pb-5">
+				<table id="tbOrderHistory" class="table border ps-table w-100 mb-3">
+					<thead>
+						<tr>
+							<th class="font-weight-bold py-2 border-0">Document Type</th>
+							<th class="font-weight-bold py-2 border-0 quantity">Number</th>
+							<th class="font-weight-bold py-2 border-0 ">Created</th>
+							<th class="font-weight-bold py-2 border-0 ">Expiration</th>
+							<th class="font-weight-bold py-2 border-0 ">PO</th>
+							<th class="font-weight-bold py-2 border-0 ">Customer</th>
+							<th class="font-weight-bold py-2 border-0 ">Total</th>
+							<th class="font-weight-bold py-2 border-0 ">Status</th>
+							<th class="font-weight-bold py-2 border-0 ">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
