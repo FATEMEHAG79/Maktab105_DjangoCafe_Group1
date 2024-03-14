@@ -48,3 +48,47 @@ class LogoutView(generic.RedirectView):
 
         messages.info(self.request, "Bye Bye 👋🏻")
         return super().get(self.request, *args, **kwargs)
+
+
+class ProfileView(DetailView, LoginRequiredMixin):
+    model = User
+    template_name = 'profile.html'
+    context_object_name = 'users'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = context['users']
+        raw_password = user.check_password('')
+        context['raw_password'] = raw_password
+        return context
+
+
+class ChangeinformationView(UpdateView):
+    model = User
+    fields = ['username', 'phone_number', 'address']
+    template_name = 'changeinformation.html'
+    success_url = reverse_lazy('coffeeshop')
+
+
+class PasswordResetCofirmView:
+    pass
+
+
+class ChangePasswordView(PasswordResetConfirmView):
+    template_name = "change_password.html"
+    form_class = CustomPasswordChangeForm
+    success_url = reverse_lazy('password_reset_complete')
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return super().form_valid(form)
+
+    def form_valid(self, form):
+        return redirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        # This method is called when invalid form data has been POSTed.
+        return self.render_to_response(self.get_context_data(form=form))
