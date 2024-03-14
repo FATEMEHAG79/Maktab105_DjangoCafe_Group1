@@ -7,27 +7,6 @@ from .models import MenuItems, Order, OrderItem
 # Create your views here.
 
 
-class ProfileView(DetailView,LoginRequiredMixin):
-    model = User
-    template_name = 'profile.html'
-    context_object_name = 'users'
-    login_url = 'login'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user = context['users']
-        raw_password = user.check_password('')
-        context['raw_password'] = raw_password
-        return context
-
-
-class ChangeinformationView(UpdateView):
-    model = User
-    fields = ['username', 'phone_number', 'address']
-    template_name = 'changeinformation.html'
-    success_url = reverse_lazy('coffeeshop')
-
-
 class MenuItemsView(ListView):
     model = MenuItems
     template_name = 'menu_items.html'
