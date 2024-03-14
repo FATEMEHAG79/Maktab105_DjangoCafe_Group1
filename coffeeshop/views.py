@@ -61,10 +61,12 @@ class AboutView(TemplateView):
 
 
 class HistoryView(ListView):
-    model=Order
-    template_name='donecart.html'  
-    def filtter_type():
-        order_history= Order.objects.filter(user='username').values()
+    model = Order
+    template_name = 'donecart.html'
+
+    @staticmethod
+    def filter_type():
+        order_history = Order.objects.filter(user='username').values()
         return order_history
     
 
