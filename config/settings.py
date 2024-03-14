@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    }
 ]
 
 # Internationalization
@@ -134,5 +134,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'django.coffeeshop@gmail.com'
-EMAIL_HOST_PASSWORD = "djangoprojectsucks"
+EMAIL_HOST_PASSWORD = "gmag rilu mbxs vqaq"
 
